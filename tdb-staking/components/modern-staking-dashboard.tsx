@@ -54,7 +54,7 @@ export default function StakingDashboard() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-0 lg:divide-x divide-gray-700">
             <div className="flex items-center space-x-3 px-4">
               <div className="p-2 bg-gray-700/50 rounded-lg">
-                <Clock className="h-5 w-5 text-orange-400" />
+                <Clock className="h-5 w-5 text-blue-400" />
               </div>
               <div>
                 <div className="text-sm text-gray-400">Staking Window</div>
@@ -64,7 +64,7 @@ export default function StakingDashboard() {
             
             <div className="flex items-center space-x-3 px-4">
               <div className="p-2 bg-gray-700/50 rounded-lg">
-                <Wallet className="h-5 w-5 text-orange-400" />
+                <Wallet className="h-5 w-5 text-blue-400" />
               </div>
               <div>
                 <div className="text-sm text-gray-400">Confirmed TVL</div>
@@ -74,7 +74,7 @@ export default function StakingDashboard() {
             
             <div className="flex items-center space-x-3 px-4">
               <div className="p-2 bg-gray-700/50 rounded-lg">
-                <Clock className="h-5 w-5 text-orange-400" />
+                <Clock className="h-5 w-5 text-blue-400" />
               </div>
               <div>
                 <div className="text-sm text-gray-400">Pending Stake</div>
@@ -85,7 +85,7 @@ export default function StakingDashboard() {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between px-4 space-y-4 sm:space-y-0">
               <div className="flex items-center space-x-3">
                 <div className="p-2 bg-gray-700/50 rounded-lg">
-                  <Trophy className="h-5 w-5 text-orange-400" />
+                  <Trophy className="h-5 w-5 text-blue-400" />
                 </div>
                 <div>
                   <div className="text-sm text-gray-400">Delegations</div>
@@ -95,7 +95,7 @@ export default function StakingDashboard() {
               
               <div className="flex items-center space-x-3">
                 <div className="p-2 bg-gray-700/50 rounded-lg">
-                  <Users className="h-5 w-5 text-orange-400" />
+                  <Users className="h-5 w-5 text-blue-400" />
                 </div>
                 <div>
                   <div className="text-sm text-gray-400">Stakers</div>
@@ -171,7 +171,7 @@ export default function StakingDashboard() {
                 <Card className="border-0 bg-transparent">
                   <CardHeader>
                     <CardTitle className="text-gray-100">Connect Wallet</CardTitle>
-                    <CardDescription className="text-gray-400">Link your XRP wallet to start staking</CardDescription>
+                    <CardDescription className="text-gray-400">Link your XRPL wallet to start staking</CardDescription>
                   </CardHeader>
                   <CardContent className="flex flex-col items-center text-center">
                     <Wallet className="h-16 w-16 mb-4 text-blue-400" />

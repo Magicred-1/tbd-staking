@@ -36,7 +36,7 @@ export function StakingTab() {
             )}
           >
             <div className="text-gray-400 text-sm mb-1">{option.days}</div>
-            <div className="text-emerald-400 text-xl font-medium">{option.apr}</div>
+            <div className="text-blue-400 text-xl font-medium">{option.apr}</div>
           </button>
         ))}
       </div>
@@ -57,7 +57,7 @@ export function StakingTab() {
               <Image src="/xrp_icon.png" alt="XRP" width={30} height={30} className="rounded-full border border-gray-700" />
               <span className="text-gray-100">XRP</span>
             </div>
-            <span className="text-yellow-500">Max</span>
+            <span className="text-blue-400">Max</span>
           </div>
         </div>
 
@@ -84,7 +84,7 @@ export function StakingTab() {
         <div className="flex space-x-4 border-b border-gray-700 pb-2">
           <Button
             variant="ghost"
-            className="text-yellow-500 hover:text-yellow-400 hover:bg-transparent px-0 font-medium"
+            className="text-blue-400 hover:text-blue-600 hover:bg-transparent px-0 font-medium"
           >
             Summary
           </Button>

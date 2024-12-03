@@ -34,7 +34,7 @@ export default function RootLayout({
         walletconnect,
       ]}> */}
         <body
-          className={`${lexend.variable} antialiased`}
+          className={`${lexend.className} antialiased`}
       >
           {children}
       </body>
