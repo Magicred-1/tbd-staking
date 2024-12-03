@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { WalletConnectDialog } from './wallet-connect-dialog'
 import { StakingTab } from './staking-tab'
+import Image from "next/image"
 
 type Provider = {
   name: string;
@@ -39,7 +40,12 @@ export default function StakingDashboard() {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100">
       <header className="border-b border-gray-700">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">XRP Staking</h1>
+          <h1 className="text-2xl font-bold bg-clip-text text-white">
+            <div className="flex items-center space-x-2 gap-2">
+              <Image src="/xrp_icon.png" alt="XRP" width={30} height={30} className="rounded-full border border-gray-700" />
+              XRP Staking
+            </div>
+          </h1>
           <WalletConnectDialog />
         </div>
       </header>
