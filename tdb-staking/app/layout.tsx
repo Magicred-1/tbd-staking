@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Provider from "@/components/wallets/Provider";
+// import Provider from "@/components/wallets/Provider";
 import { Lexend } from 'next/font/google';
-import { CrossmarkAdaptor, WalletConnectAdaptor, XummAdaptor } from '@xrpl-wallet/adaptors'
+// import { CrossmarkAdaptor, WalletConnectAdaptor, XummAdaptor } from '@xrpl-wallet/adaptors'
 
 export const metadata: Metadata = {
   title: "TBD Staking",

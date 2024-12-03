@@ -7,7 +7,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { WalletIcon as WalletConnect, Smartphone, CreditCard } from 'lucide-react'
 import Image from "next/image"
 
 export function WalletConnectDialog() {
