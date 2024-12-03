@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { WalletConnectDialog } from "./components/wallet-connect-dialog"
+import { WalletConnectDialog } from './wallet-connect-dialog'
 
 type Provider = {
   name: string;
