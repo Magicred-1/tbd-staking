@@ -2,11 +2,11 @@
 
 import { useState } from 'react'
 import { Search, ExternalLink, Clock, Wallet, Trophy, Users } from 'lucide-react'
-import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { WalletConnectDialog } from './wallet-connect-dialog'
+import { StakingTab } from './staking-tab'
 
 type Provider = {
   name: string;
@@ -26,6 +26,7 @@ const providers: Provider[] = [
 
 export default function StakingDashboard() {
   const [searchTerm, setSearchTerm] = useState('')
+  const [selectedProvider, setSelectedProvider] = useState<Provider | null>(null)
 
   const filteredProviders = providers.filter(provider => 
     provider.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -81,7 +82,13 @@ export default function StakingDashboard() {
                 </div>
                 <div className="space-y-2 max-h-[calc(100vh-400px)] overflow-y-auto pr-2">
                   {filteredProviders.map((provider) => (
-                    <Card key={provider.key} className="bg-gray-750 border-gray-600 hover:bg-gray-700 transition-all duration-300">
+                    <Card 
+                      key={provider.key} 
+                      className={`bg-gray-750 border-gray-600 hover:bg-gray-700 transition-all duration-300 cursor-pointer ${
+                        selectedProvider?.key === provider.key ? 'border-blue-500 border-2' : ''
+                      }`}
+                      onClick={() => setSelectedProvider(provider)}
+                    >
                       <CardContent className="p-4">
                         <div className="grid grid-cols-4 gap-4">
                           <div>
@@ -106,8 +113,8 @@ export default function StakingDashboard() {
           <div>
             <Tabs defaultValue="connect" className="bg-gray-800 border border-gray-700 rounded-lg p-1">
               <TabsList className="grid w-full grid-cols-2 bg-gray-750">
-                <TabsTrigger value="connect" className="data-[state=active]:bg-gray-700">Connect</TabsTrigger>
-                <TabsTrigger value="stake" className="data-[state=active]:bg-gray-700">Stake</TabsTrigger>
+                <TabsTrigger value="connect" className="data-[state=active]:bg-gray-700 text-white">Connect</TabsTrigger>
+                <TabsTrigger value="stake" className="data-[state=active]:bg-gray-700 text-white">Stake</TabsTrigger>
               </TabsList>
               <TabsContent value="connect">
                 <Card className="border-0 bg-transparent">
@@ -123,24 +130,8 @@ export default function StakingDashboard() {
               </TabsContent>
               <TabsContent value="stake">
                 <Card className="border-0 bg-transparent">
-                  <CardHeader>
-                    <CardTitle className="text-gray-100">Stake XRP</CardTitle>
-                    <CardDescription className="text-gray-400">Choose amount and duration</CardDescription>
-                  </CardHeader>
                   <CardContent>
-                    <div className="space-y-4">
-                      <div className="space-y-2">
-                        <label htmlFor="amount" className="text-sm font-medium text-gray-300">Amount (XRP)</label>
-                        <Input id="amount" placeholder="Enter XRP amount" className="bg-gray-700 border-gray-600 text-gray-100 placeholder-gray-400" />
-                      </div>
-                      <div className="space-y-2">
-                        <label htmlFor="duration" className="text-sm font-medium text-gray-300">Duration (days)</label>
-                        <Input id="duration" placeholder="Enter staking duration" className="bg-gray-700 border-gray-600 text-gray-100 placeholder-gray-400" />
-                      </div>
-                      <Button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white transition-all duration-300">
-                        Stake XRP
-                      </Button>
-                    </div>
+                    <StakingTab />
                   </CardContent>
                 </Card>
               </TabsContent>

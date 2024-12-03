@@ -1,4 +1,4 @@
-import StakingDashboard from "@/components/staking-dashboard";
+import StakingDashboard from "@/components/modern-staking-dashboard";
 
 export default function Home() {
   return (
