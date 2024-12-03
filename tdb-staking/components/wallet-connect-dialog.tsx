@@ -8,6 +8,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { WalletIcon as WalletConnect, Smartphone, CreditCard } from 'lucide-react'
+import Image from "next/image"
 
 export function WalletConnectDialog() {
   return (
@@ -26,15 +27,18 @@ export function WalletConnectDialog() {
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <Button variant="outline" className="flex items-center justify-start space-x-2 h-12 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-left">
-            <WalletConnect className="h-5 w-5" />
+            {/* <WalletConnect className="h-5 w-5" /> */}
+            <Image src="/walletconnect_icon.png" alt="WalletConnect" width={24} height={24} className="rounded-full border border-gray-700" />
             <span>WalletConnect</span>
           </Button>
           <Button variant="outline" className="flex items-center justify-start space-x-2 h-12 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-left">
-            <Smartphone className="h-5 w-5" />
+            <Image src="/xaman.webp" alt="Xam" width={24} height={24} className="rounded-full border border-gray-700" />
+            {/* <Smartphone className="h-5 w-5" /> */}
             <span>Xaman</span>
           </Button>
           <Button variant="outline" className="flex items-center justify-start space-x-2 h-12 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-left">
-            <CreditCard className="h-5 w-5" />
+            {/* <CreditCard className="h-5 w-5" /> */}
+            <Image src="/crossmark_icon.png" alt="Crossmark" width={24} height={24} className="rounded-full border border-gray-700" />
             <span>Crossmark</span>
           </Button>
         </div>

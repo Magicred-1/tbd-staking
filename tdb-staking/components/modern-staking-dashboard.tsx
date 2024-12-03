@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Search, ExternalLink, Clock, Wallet, Trophy, Users } from 'lucide-react'
+import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -13,15 +14,16 @@ type Provider = {
   key: string;
   delegation: string;
   commission: string;
+  url: string;
 }
 
 const providers: Provider[] = [
-  { name: "RippleX", key: "r9Kf...", delegation: "3245.83", commission: "3%" },
-  { name: "XRPL Commons", key: "rT3b...", delegation: "2891.45", commission: "2%" },
-  { name: "XRPL Labs", key: "rH1b...", delegation: "2891.45", commission: "5%" },
-  { name: "Gatehub", key: "rP3t...", delegation: "1567.21", commission: "5%" },
-  { name: "Bithomp", key: "rB4x...", delegation: "982.67", commission: "3%" },
-  { name: "XRP Toolkit", key: "rJ2d...", delegation: "756.92", commission: "5%" },
+  { name: "RippleX", key: "r9Kf...", delegation: "3245.83", commission: "3%", url: "https://ripple.com" },
+  { name: "XRPL Commons", key: "rT3b...", delegation: "2891.45", commission: "2%", url: "https://xrplcommons.org" },
+  { name: "XRPL Labs", key: "rH1b...", delegation: "2891.45", commission: "5%", url: "https://xrpl-labs.com" },
+  { name: "Gatehub", key: "rP3t...", delegation: "1567.21", commission: "5%", url: "https://gatehub.net" },
+  { name: "Bithomp", key: "rB4x...", delegation: "982.67", commission: "3%", url: "https://bithomp.com" },
+  { name: "XRP Toolkit", key: "rJ2d...", delegation: "756.92", commission: "5%", url: "https://xrptoolkit.com" },
 ]
 
 export default function StakingDashboard() {
@@ -43,24 +45,60 @@ export default function StakingDashboard() {
       </header>
 
       <main className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
-          {[
-            { title: "Staking Window", icon: Clock, value: "Opened", valueColor: "text-green-400" },
-            { title: "Confirmed TVL", icon: Wallet, value: "15320.45 XRP", valueColor: "text-blue-400" },
-            { title: "Pending Stake", icon: Clock, value: "-1.2 XRP", valueColor: "text-red-400" },
-            { title: "Delegations", icon: Trophy, value: "12.5K", valueColor: "text-yellow-400" },
-            { title: "Stakers", icon: Users, value: "8.2K", valueColor: "text-purple-400" },
-          ].map((item, index) => (
-            <Card key={index} className="bg-gray-800 border-gray-700 hover:bg-gray-750 transition-all duration-300">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium text-gray-400">{item.title}</CardTitle>
-                <item.icon className="h-4 w-4 text-gray-400" />
-              </CardHeader>
-              <CardContent>
-                <div className={`text-2xl font-bold ${item.valueColor}`}>{item.value}</div>
-              </CardContent>
-            </Card>
-          ))}
+        <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-lg mb-8 p-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-0 lg:divide-x divide-gray-700">
+            <div className="flex items-center space-x-3 px-4">
+              <div className="p-2 bg-gray-700/50 rounded-lg">
+                <Clock className="h-5 w-5 text-orange-400" />
+              </div>
+              <div>
+                <div className="text-sm text-gray-400">Staking Window</div>
+                <div className="font-medium text-gray-200">Opened</div>
+              </div>
+            </div>
+            
+            <div className="flex items-center space-x-3 px-4">
+              <div className="p-2 bg-gray-700/50 rounded-lg">
+                <Wallet className="h-5 w-5 text-orange-400" />
+              </div>
+              <div>
+                <div className="text-sm text-gray-400">Confirmed TVL</div>
+                <div className="font-medium text-gray-200">15320.45987459 XRP</div>
+              </div>
+            </div>
+            
+            <div className="flex items-center space-x-3 px-4">
+              <div className="p-2 bg-gray-700/50 rounded-lg">
+                <Clock className="h-5 w-5 text-orange-400" />
+              </div>
+              <div>
+                <div className="text-sm text-gray-400">Pending Stake</div>
+                <div className="font-medium text-gray-200">0 XRP</div>
+              </div>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between px-4 space-y-4 sm:space-y-0">
+              <div className="flex items-center space-x-3">
+                <div className="p-2 bg-gray-700/50 rounded-lg">
+                  <Trophy className="h-5 w-5 text-orange-400" />
+                </div>
+                <div>
+                  <div className="text-sm text-gray-400">Delegations</div>
+                  <div className="font-medium text-gray-200">12.5K</div>
+                </div>
+              </div>
+              
+              <div className="flex items-center space-x-3">
+                <div className="p-2 bg-gray-700/50 rounded-lg">
+                  <Users className="h-5 w-5 text-orange-400" />
+                </div>
+                <div>
+                  <div className="text-sm text-gray-400">Stakers</div>
+                  <div className="font-medium text-gray-200">8.2K</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -85,17 +123,25 @@ export default function StakingDashboard() {
                     <Card 
                       key={provider.key} 
                       className={`bg-gray-750 border-gray-600 hover:bg-gray-700 transition-all duration-300 cursor-pointer ${
-                        selectedProvider?.key === provider.key ? 'border-blue-500 border-2' : ''
+                        selectedProvider?.key === provider.key ? 'border-2 border-blue-400' : ''
                       }`}
                       onClick={() => setSelectedProvider(provider)}
                     >
                       <CardContent className="p-4">
-                        <div className="grid grid-cols-4 gap-4">
+                        <div className="grid grid-cols-4 gap-4 items-center">
                           <div>
                             <div className="flex items-center space-x-2">
                               <span className="h-2 w-2 bg-green-500 rounded-full" />
                               <span className="font-medium text-gray-100">{provider.name}</span>
-                              <ExternalLink className="h-4 w-4 text-gray-400 cursor-pointer hover:text-blue-400 transition-colors duration-300" />
+                              <a 
+                                href={provider.url} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                onClick={(e) => e.stopPropagation()}
+                                className="hover:text-blue-400 transition-colors duration-300"
+                              >
+                                <ExternalLink className="h-4 w-4 text-gray-400 cursor-pointer hover:text-blue-400 transition-colors duration-300" />
+                              </a>
                             </div>
                           </div>
                           <div className="font-mono text-sm text-gray-400">{provider.key}</div>
@@ -113,8 +159,8 @@ export default function StakingDashboard() {
           <div>
             <Tabs defaultValue="connect" className="bg-gray-800 border border-gray-700 rounded-lg p-1">
               <TabsList className="grid w-full grid-cols-2 bg-gray-750">
-                <TabsTrigger value="connect" className="data-[state=active]:bg-gray-700 text-white">Connect</TabsTrigger>
-                <TabsTrigger value="stake" className="data-[state=active]:bg-gray-700 text-white">Stake</TabsTrigger>
+                <TabsTrigger value="connect" className="data-[state=active]:bg-gray-700">Connect</TabsTrigger>
+                <TabsTrigger value="stake" className="data-[state=active]:bg-gray-700">Stake</TabsTrigger>
               </TabsList>
               <TabsContent value="connect">
                 <Card className="border-0 bg-transparent">
