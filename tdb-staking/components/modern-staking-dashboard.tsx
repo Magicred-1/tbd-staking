@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { WalletConnectDialog } from './wallet-connect-dialog'
+import { WalletConnectDialog } from "./components/wallet-connect-dialog"
 
 type Provider = {
   name: string;
@@ -113,7 +113,7 @@ export default function StakingDashboard() {
                 <Card className="border-0 bg-transparent">
                   <CardHeader>
                     <CardTitle className="text-gray-100">Connect Wallet</CardTitle>
-                    <CardDescription className="text-gray-400">Link your XRPL wallet to start staking</CardDescription>
+                    <CardDescription className="text-gray-400">Link your XRP wallet to start staking</CardDescription>
                   </CardHeader>
                   <CardContent className="flex flex-col items-center text-center">
                     <Wallet className="h-16 w-16 mb-4 text-blue-400" />
