@@ -20,6 +20,21 @@ dependencies:
   '@radix-ui/react-tabs':
     specifier: ^1.1.1
     version: 1.1.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@19.0.0-rc-66855b96-20241106)(react@19.0.0-rc-66855b96-20241106)
+  '@xrpl-wallet-adapter/crossmark':
+    specifier: ^0.1.3
+    version: 0.1.3
+  '@xrpl-wallet-adapter/walletconnect':
+    specifier: ^0.1.3
+    version: 0.1.3(@types/react@18.3.12)(react@19.0.0-rc-66855b96-20241106)
+  '@xrpl-wallet-adapter/xaman':
+    specifier: ^0.1.3
+    version: 0.1.3
+  '@xrpl-wallet-standard/app':
+    specifier: ^0.1.3
+    version: 0.1.3
+  '@xrpl-wallet-standard/react':
+    specifier: ^0.2.3
+    version: 0.2.3(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@19.0.0-rc-66855b96-20241106)(react@19.0.0-rc-66855b96-20241106)
   '@xrpl-wallet/adaptors':
     specifier: ^0.4.0
     version: 0.4.0(@types/react@18.3.12)(react@19.0.0-rc-66855b96-20241106)
@@ -148,6 +163,20 @@ packages:
       tslib: 2.8.1
     dev: false
     optional: true
+
+  /@emotion/is-prop-valid@1.2.2:
+    resolution: {integrity: sha512-uNsoYd37AFmaCdXlg6EYD1KaPOaRWRByMCYzbKUX4+hhMfrxdVSelShywL4JVaAeM/eHUOSprYBQls+/neX3pw==}
+    dependencies:
+      '@emotion/memoize': 0.8.1
+    dev: false
+
+  /@emotion/memoize@0.8.1:
+    resolution: {integrity: sha512-W2P2c/VRW1/1tLox0mVUalvnWXxavmv/Oum2aPsRcoDJuob75FC3Y8FbpfLwUegRcxINtGUMPq0tFCvYNTBXNA==}
+    dev: false
+
+  /@emotion/unitless@0.8.1:
+    resolution: {integrity: sha512-KOEGMu6dmJZtpadb476IsZBclKvILjopjUii3V+7MnXIQCYh8W3NgNcgwo21n9LXZX6EDIKvqfjYxXebDwxKmQ==}
+    dev: false
 
   /@eslint-community/eslint-utils@4.4.1(eslint@8.57.1):
     resolution: {integrity: sha512-s3O3waFUrMV8P/XaF/+ZTp1X9XBZW1a4B97ZnjQF2KYWaFD2A8KyFBsrsfSjEmjn3RGWAIuvlneuZm3CUK3jbA==}
@@ -921,6 +950,10 @@ packages:
     requiresBuild: true
     optional: true
 
+  /@radix-ui/colors@3.0.0:
+    resolution: {integrity: sha512-FUOsGBkHrYJwCSEtWRCIfQbZG7q1e6DgxCIOe1SUQzDe/7rXXeA47s8yCn6fuTNQAj1Zq4oTFi9Yjp3wzElcxg==}
+    dev: false
+
   /@radix-ui/primitive@1.1.0:
     resolution: {integrity: sha512-4Z8dn6Upk0qk4P74xBhZ6Hd/w0mPEzOOLxy4xiPXOXqjF7jZS0VAKk7/x/H6FyY2zCkYJqePf1G5KmkmNJ4RBA==}
     dev: false
@@ -1090,6 +1123,14 @@ packages:
       '@types/react-dom': 18.3.1
       react: 19.0.0-rc-66855b96-20241106
       react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
+    dev: false
+
+  /@radix-ui/react-icons@1.3.2(react@19.0.0-rc-66855b96-20241106):
+    resolution: {integrity: sha512-fyQIhGDhzfc9pK2kH6Pl9c4BDJGfMkPqkyIgYDthyNYoNg3wVhoJMMh19WS4Up/1KMPFVpNsT2q3WmXn2N1m6g==}
+    peerDependencies:
+      react: ^16.x || ^17.x || ^18.x || ^19.0.0 || ^19.0.0-rc
+    dependencies:
+      react: 19.0.0-rc-66855b96-20241106
     dev: false
 
   /@radix-ui/react-id@1.1.0(@types/react@18.3.12)(react@19.0.0-rc-66855b96-20241106):
@@ -1376,6 +1417,21 @@ packages:
     resolution: {integrity: sha512-DGmGtC8Tt63J5GfHgfl5CuAXh96VF/LD8K9Hr/Gv0J2lAoRGlPOMpqMpMbCTOoOJMZCk2Xt+DskdDyn6dEFdzQ==}
     dev: false
 
+  /@scure/bip32@1.6.0:
+    resolution: {integrity: sha512-82q1QfklrUUdXJzjuRU7iG7D7XiFx5PHYVS0+oeNKhyDLT7WPqs6pBcM2W5ZdwOwKCwoE1Vy1se+DHjcXwCYnA==}
+    dependencies:
+      '@noble/curves': 1.7.0
+      '@noble/hashes': 1.6.1
+      '@scure/base': 1.2.1
+    dev: false
+
+  /@scure/bip39@1.5.0:
+    resolution: {integrity: sha512-Dop+ASYhnrwm9+HA/HwXg7j2ZqM6yk2fyLWb5znexjctFY3+E+eU8cIWI0Pql0Qx4hPZCijlGq4OL71g+Uz30A==}
+    dependencies:
+      '@noble/hashes': 1.6.1
+      '@scure/base': 1.2.1
+    dev: false
+
   /@stablelib/aead@1.0.1:
     resolution: {integrity: sha512-q39ik6sxGHewqtO0nP4BuSe3db5G1fEJE8ukvngS2gLkBXyy6E7pLubhbYgnkDFv6V8cWaxcE4Xn0t6LWcJkyg==}
     dev: false
@@ -1529,7 +1585,7 @@ packages:
       '@transia/ripple-address-codec': 4.2.8-alpha.0
       bn.js: 5.2.1
       brorand: 1.1.0
-      elliptic: 6.5.4
+      elliptic: 6.6.1
       hash.js: 1.1.7
     dev: false
 
@@ -1601,6 +1657,10 @@ packages:
     resolution: {integrity: sha512-hHxJU6PAEUn0TP4S/ZOzuTUvJWuZ6eIKeNKb5RBpODvSl6hp1Wrw4s7ATY50rklRCScUDpHzVA/DQdSjJ3UoYQ==}
     dependencies:
       '@types/node': 20.17.9
+    dev: false
+
+  /@types/stylis@4.2.5:
+    resolution: {integrity: sha512-1Xve+NMN7FWjY14vLoY5tL3BVEQ/n42YLwaqJIPYhotZ9uBHt87VceMwWQpzmdEt2TNXIorIFG+YeCUUW7RInw==}
     dev: false
 
   /@types/trusted-types@2.0.7:
@@ -1748,6 +1808,64 @@ packages:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: true
 
+  /@wallet-standard/app@1.1.0:
+    resolution: {integrity: sha512-3CijvrO9utx598kjr45hTbbeeykQrQfKmSnxeWOgU25TOEpvcipD/bYDQWIqUv1Oc6KK4YStokSMu/FBNecGUQ==}
+    engines: {node: '>=16'}
+    dependencies:
+      '@wallet-standard/base': 1.1.0
+    dev: false
+
+  /@wallet-standard/base@1.0.1:
+    resolution: {integrity: sha512-1To3ekMfzhYxe0Yhkpri+Fedq0SYcfrOfJi3vbLjMwF2qiKPjTGLwZkf2C9ftdQmxES+hmxhBzTwF4KgcOwf8w==}
+    engines: {node: '>=16'}
+    dev: false
+
+  /@wallet-standard/base@1.1.0:
+    resolution: {integrity: sha512-DJDQhjKmSNVLKWItoKThJS+CsJQjR9AOBOirBVT1F9YpRyC9oYHE+ZnSf8y8bxUphtKqdQMPVQ2mHohYdRvDVQ==}
+    engines: {node: '>=16'}
+    dev: false
+
+  /@wallet-standard/core@1.1.0:
+    resolution: {integrity: sha512-v2W5q/NlX1qkn2q/JOXQT//pOAdrhz7+nOcO2uiH9+a0uvreL+sdWWqkhFmMcX+HEBjaibdOQMUoIfDhOGX4XA==}
+    engines: {node: '>=16'}
+    dependencies:
+      '@wallet-standard/app': 1.1.0
+      '@wallet-standard/base': 1.1.0
+      '@wallet-standard/errors': 0.1.0
+      '@wallet-standard/features': 1.1.0
+      '@wallet-standard/wallet': 1.1.0
+    dev: false
+
+  /@wallet-standard/errors@0.1.0:
+    resolution: {integrity: sha512-ag0eq5ixy7rz8M5YUWGi/EoIJ69KJ+KILFNunoufgmXVkiISC7+NIZXJYTJrapni4f9twE1hfT+8+IV2CYCvmg==}
+    engines: {node: '>=16'}
+    hasBin: true
+    dependencies:
+      chalk: 5.3.0
+      commander: 12.1.0
+    dev: false
+
+  /@wallet-standard/features@1.0.3:
+    resolution: {integrity: sha512-m8475I6W5LTatTZuUz5JJNK42wFRgkJTB0I9tkruMwfqBF2UN2eomkYNVf9RbrsROelCRzSFmugqjKZBFaubsA==}
+    engines: {node: '>=16'}
+    dependencies:
+      '@wallet-standard/base': 1.0.1
+    dev: false
+
+  /@wallet-standard/features@1.1.0:
+    resolution: {integrity: sha512-hiEivWNztx73s+7iLxsuD1sOJ28xtRix58W7Xnz4XzzA/pF0+aicnWgjOdA10doVDEDZdUuZCIIqG96SFNlDUg==}
+    engines: {node: '>=16'}
+    dependencies:
+      '@wallet-standard/base': 1.1.0
+    dev: false
+
+  /@wallet-standard/wallet@1.1.0:
+    resolution: {integrity: sha512-Gt8TnSlDZpAl+RWOOAB/kuvC7RpcdWAlFbHNoi4gsXsfaWa1QCT6LBcfIYTPdOZC9OVZUDwqGuGAcqZejDmHjg==}
+    engines: {node: '>=16'}
+    dependencies:
+      '@wallet-standard/base': 1.1.0
+    dev: false
+
   /@walletconnect/core@2.17.2:
     resolution: {integrity: sha512-O9VUsFg78CbvIaxfQuZMsHcJ4a2Z16DRz/O4S+uOAcGKhH/i/ln8hp864Tb+xRvifWSzaZ6CeAVxk657F+pscA==}
     engines: {node: '>=18'}
@@ -1806,6 +1924,17 @@ packages:
       '@walletconnect/events': 1.0.1
       '@walletconnect/time': 1.0.2
       events: 3.3.0
+    dev: false
+
+  /@walletconnect/jsonrpc-http-connection@1.0.8:
+    resolution: {integrity: sha512-+B7cRuaxijLeFDJUq5hAzNyef3e3tBDIxyaCNmFtjwnod5AGis3RToNqzFU33vpVcxFhofkpE7Cx+5MYejbMGw==}
+    dependencies:
+      '@walletconnect/jsonrpc-utils': 1.0.8
+      '@walletconnect/safe-json': 1.0.2
+      cross-fetch: 3.1.8
+      events: 3.3.0
+    transitivePeerDependencies:
+      - encoding
     dev: false
 
   /@walletconnect/jsonrpc-provider@1.0.14:
@@ -1991,6 +2120,40 @@ packages:
       - ioredis
     dev: false
 
+  /@walletconnect/universal-provider@2.17.2:
+    resolution: {integrity: sha512-yIWDhBODRa9J349d/i1sObzon0vy4n+7R3MvGQQYaU1EVrV+WfoGSRsu8U7rYsL067/MAUu9t/QrpPblaSbz7g==}
+    dependencies:
+      '@walletconnect/events': 1.0.1
+      '@walletconnect/jsonrpc-http-connection': 1.0.8
+      '@walletconnect/jsonrpc-provider': 1.0.14
+      '@walletconnect/jsonrpc-types': 1.0.4
+      '@walletconnect/jsonrpc-utils': 1.0.8
+      '@walletconnect/keyvaluestorage': 1.1.1
+      '@walletconnect/logger': 2.1.2
+      '@walletconnect/sign-client': 2.17.2
+      '@walletconnect/types': 2.17.2
+      '@walletconnect/utils': 2.17.2
+      events: 3.3.0
+      lodash: 4.17.21
+    transitivePeerDependencies:
+      - '@azure/app-configuration'
+      - '@azure/cosmos'
+      - '@azure/data-tables'
+      - '@azure/identity'
+      - '@azure/keyvault-secrets'
+      - '@azure/storage-blob'
+      - '@capacitor/preferences'
+      - '@netlify/blobs'
+      - '@planetscale/database'
+      - '@react-native-async-storage/async-storage'
+      - '@upstash/redis'
+      - '@vercel/kv'
+      - bufferutil
+      - encoding
+      - ioredis
+      - utf-8-validate
+    dev: false
+
   /@walletconnect/utils@2.17.2:
     resolution: {integrity: sha512-T7eLRiuw96fgwUy2A5NZB5Eu87ukX8RCVoO9lji34RFV4o2IGU9FhTEWyd4QQKI8OuQRjSknhbJs0tU0r0faPw==}
     dependencies:
@@ -2041,6 +2204,123 @@ packages:
     dependencies:
       '@walletconnect/window-getters': 1.0.1
       tslib: 1.14.1
+    dev: false
+
+  /@xrpl-wallet-adapter/base@0.1.3:
+    resolution: {integrity: sha512-LlK/lZY9hL/MQfucLC8Lk4QR2kbe5Z9IeysbLM3QFVchkzUaOdhqKNVFkIXrCBFgbqz5SUm20syTR/kMV3c06g==}
+    dependencies:
+      '@wallet-standard/base': 1.0.1
+      '@wallet-standard/features': 1.0.3
+      '@xrpl-wallet-standard/core': 0.1.3
+      '@xrplf/isomorphic': 1.0.1
+      ripple-keypairs: 2.0.0
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+    dev: false
+
+  /@xrpl-wallet-adapter/crossmark@0.1.3:
+    resolution: {integrity: sha512-UEUq+oxYvNPYjgZk3z0zcXAxgI0sZ31ri2n1fNYKFCpbtiXr3oG+XMl0i7gabL3jGfUGm9++dws/3lWyzzqgTA==}
+    dependencies:
+      '@wallet-standard/base': 1.0.1
+      '@xrpl-wallet-adapter/base': 0.1.3
+      '@xrpl-wallet-standard/core': 0.1.3
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+    dev: false
+
+  /@xrpl-wallet-adapter/walletconnect@0.1.3(@types/react@18.3.12)(react@19.0.0-rc-66855b96-20241106):
+    resolution: {integrity: sha512-1Um/tGi6P9U7EfX4i2drUOMrK8PgTpbtCoBnfdQK6C436WCiWgSRO1rjS21Mh0OsuOkbXrZUkuBfznblBVVBIQ==}
+    dependencies:
+      '@wallet-standard/base': 1.0.1
+      '@walletconnect/modal': 2.7.0(@types/react@18.3.12)(react@19.0.0-rc-66855b96-20241106)
+      '@walletconnect/universal-provider': 2.17.2
+      '@walletconnect/utils': 2.17.2
+      '@xrpl-wallet-adapter/base': 0.1.3
+      '@xrpl-wallet-standard/core': 0.1.3
+    transitivePeerDependencies:
+      - '@azure/app-configuration'
+      - '@azure/cosmos'
+      - '@azure/data-tables'
+      - '@azure/identity'
+      - '@azure/keyvault-secrets'
+      - '@azure/storage-blob'
+      - '@capacitor/preferences'
+      - '@netlify/blobs'
+      - '@planetscale/database'
+      - '@react-native-async-storage/async-storage'
+      - '@types/react'
+      - '@upstash/redis'
+      - '@vercel/kv'
+      - bufferutil
+      - encoding
+      - ioredis
+      - react
+      - supports-color
+      - utf-8-validate
+    dev: false
+
+  /@xrpl-wallet-adapter/xaman@0.1.3:
+    resolution: {integrity: sha512-Tm86qaX6lxK5gz7y8y5Wacv9y/kTLPTDHfoXA7ofb1DMj8mXp7xX1e+I9SWcyfxhkm9zWvcLBIs7Q+0ZRJtmLg==}
+    dependencies:
+      '@wallet-standard/base': 1.0.1
+      '@xrpl-wallet-adapter/base': 0.1.3
+      '@xrpl-wallet-standard/core': 0.1.3
+      xrpl: 4.0.0
+      xumm-oauth2-pkce: 2.8.7
+    transitivePeerDependencies:
+      - bufferutil
+      - encoding
+      - supports-color
+      - utf-8-validate
+    dev: false
+
+  /@xrpl-wallet-standard/app@0.1.3:
+    resolution: {integrity: sha512-Tpmee9lHm94nN6RfRu5eoM8uxc/1KvXjVXPMDeLMGELrwYz5RR4Sl0oNRn8ozauTg7m8nAnCKxkTqZQvKdbBTQ==}
+    dependencies:
+      '@xrpl-wallet-standard/core': 0.1.3
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+    dev: false
+
+  /@xrpl-wallet-standard/core@0.1.3:
+    resolution: {integrity: sha512-OZItFSQf/bOz6d6TEjQ/kU1Qcv0I3iqGiGdCwWjMP8TGehKZ1OnNIbr5Rz9eet4Y8/XJy2AIWg1i5VCpI0EU3g==}
+    dependencies:
+      '@transia/xrpl': 2.7.3-alpha.28
+      '@wallet-standard/core': 1.1.0
+      xrpl: 4.0.0
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+    dev: false
+
+  /@xrpl-wallet-standard/react@0.2.3(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@19.0.0-rc-66855b96-20241106)(react@19.0.0-rc-66855b96-20241106):
+    resolution: {integrity: sha512-ZCmdXZVncUXOQ2akcTY5afrJxMU67rJBWFBFlWN+7KLONdNryyCNlrANJjEa1EbElMGNRbxWJJXqQan3o1irOQ==}
+    peerDependencies:
+      '@types/react': '*'
+      react: '*'
+    dependencies:
+      '@radix-ui/colors': 3.0.0
+      '@radix-ui/react-dialog': 1.1.2(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@19.0.0-rc-66855b96-20241106)(react@19.0.0-rc-66855b96-20241106)
+      '@radix-ui/react-icons': 1.3.2(react@19.0.0-rc-66855b96-20241106)
+      '@types/react': 18.3.12
+      '@xrpl-wallet-standard/app': 0.1.3
+      react: 19.0.0-rc-66855b96-20241106
+      styled-components: 6.1.13(react-dom@19.0.0-rc-66855b96-20241106)(react@19.0.0-rc-66855b96-20241106)
+      zustand: 4.5.5(@types/react@18.3.12)(react@19.0.0-rc-66855b96-20241106)
+    transitivePeerDependencies:
+      - '@types/react-dom'
+      - bufferutil
+      - immer
+      - react-dom
+      - supports-color
+      - utf-8-validate
     dev: false
 
   /@xrpl-wallet/adaptors@0.4.0(@types/react@18.3.12)(react@19.0.0-rc-66855b96-20241106):
@@ -2113,6 +2393,16 @@ packages:
       '@noble/hashes': 1.6.1
       eventemitter3: 5.0.1
       ws: 8.18.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+    dev: false
+
+  /@xrplf/secret-numbers@1.0.0:
+    resolution: {integrity: sha512-qsCLGyqe1zaq9j7PZJopK+iGTGRbk6akkg6iZXJJgxKwck0C5x5Gnwlb1HKYGOwPKyrXWpV6a2YmcpNpUFctGg==}
+    dependencies:
+      '@xrplf/isomorphic': 1.0.1
+      ripple-keypairs: 2.0.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -2519,6 +2809,10 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
+  /camelize@1.0.1:
+    resolution: {integrity: sha512-dU+Tx2fsypxTgtLoE36npi3UqcjSSMNYfkqgmoEhtZrraP5VWq0K7FkWVTYa8eMPtnU/G2txVsfdCJTn9uzpuQ==}
+    dev: false
+
   /caniuse-lite@1.0.30001686:
     resolution: {integrity: sha512-Y7deg0Aergpa24M3qLC5xjNklnKnhsmSyR/V89dLZ1n0ucJIFNs7PgR2Yfa/Zf6W79SbBicgtGxZr2juHkEUIA==}
     dev: false
@@ -2529,6 +2823,11 @@ packages:
     dependencies:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
+
+  /chalk@5.3.0:
+    resolution: {integrity: sha512-dLitG79d+GV1Nb/VYcCDFivJeK1hiukt9QjRNVOsUtTy1rR1YJsmpGGTZ3qJos+uw7WmWF4wUwBd9jxjocFC2w==}
+    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
+    dev: false
 
   /chokidar@3.6.0:
     resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
@@ -2625,6 +2924,11 @@ packages:
       delayed-stream: 1.0.0
     dev: false
 
+  /commander@12.1.0:
+    resolution: {integrity: sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA==}
+    engines: {node: '>=18'}
+    dev: false
+
   /commander@4.1.1:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
     engines: {node: '>= 6'}
@@ -2667,6 +2971,14 @@ packages:
       sha.js: 2.4.11
     dev: false
 
+  /cross-fetch@3.1.8:
+    resolution: {integrity: sha512-cvA+JwZoU0Xq+h6WkMvAUqPEYy92Obet6UdKLfW60qn99ftItKjB5T+BkyWOFWe2pUyfQ+IJHmpOTznqk1M6Kg==}
+    dependencies:
+      node-fetch: 2.7.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
   /cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
@@ -2683,6 +2995,19 @@ packages:
 
   /crypto-js@4.2.0:
     resolution: {integrity: sha512-KALDyEYgpY+Rlob/iriUtjV6d5Eq+Y191A5g4UqLAi8CyGP9N1+FdVbkc1SxKc2r4YAYqG8JzO2KGL+AizD70Q==}
+    dev: false
+
+  /css-color-keywords@1.0.0:
+    resolution: {integrity: sha512-FyyrDHZKEjXDpNJYvVsV960FiqQyXc/LlYmsxl2BcdMb2WPx0OGRVgTg55rPSyLSNMqP52R9r8geSp7apN3Ofg==}
+    engines: {node: '>=4'}
+    dev: false
+
+  /css-to-react-native@3.2.0:
+    resolution: {integrity: sha512-e8RKaLXMOFii+02mOlqwjbD00KSEKqblnpO9e++1aXS1fPQOpS1YoqdVHBqPjHNoxeF2mimzVqawm2KCbEdtHQ==}
+    dependencies:
+      camelize: 1.0.1
+      css-color-keywords: 1.0.0
+      postcss-value-parser: 4.2.0
     dev: false
 
   /cssesc@3.0.0:
@@ -4905,6 +5230,15 @@ packages:
       source-map-js: 1.2.1
     dev: false
 
+  /postcss@8.4.38:
+    resolution: {integrity: sha512-Wglpdk03BSfXkHoQa3b/oulrotAkwrlLDRSOb9D0bN86FdRyE9lppSp33aHNPgBa0JKCoB+drFLZkQoRRYae5A==}
+    engines: {node: ^10 || ^12 || >=14}
+    dependencies:
+      nanoid: 3.3.8
+      picocolors: 1.1.1
+      source-map-js: 1.2.1
+    dev: false
+
   /postcss@8.4.49:
     resolution: {integrity: sha512-OCVPnIObs4N29kxTjzLfUryOkvZEq+pf8jTF0lg8E7uETuWHA+v7j3c/xJmiqpX450191LlmZfUKkXxkTry7nA==}
     engines: {node: ^10 || ^12 || >=14}
@@ -5201,6 +5535,18 @@ packages:
       ripple-address-codec: 4.3.1
     dev: false
 
+  /ripple-binary-codec@2.1.0:
+    resolution: {integrity: sha512-q0GAx+hj3UVcDbhXVjk7qeNfgUMehlElYJwiCuIBwqs/51GVTOwLr39Ht3eNsX5ow2xPRaC5mqHwcFDvLRm6cA==}
+    engines: {node: '>= 16'}
+    dependencies:
+      '@xrplf/isomorphic': 1.0.1
+      bignumber.js: 9.1.2
+      ripple-address-codec: 5.0.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+    dev: false
+
   /ripple-keypairs@1.3.1:
     resolution: {integrity: sha512-dmPlraWKJciFJxHcoubDahGnoIalG5e/BtV6HNDUs7wLXmtnLMHt6w4ed9R8MTL2zNrVPiIdI/HCtMMo0Tm7JQ==}
     engines: {node: '>= 10'}
@@ -5340,6 +5686,10 @@ packages:
     dependencies:
       inherits: 2.0.4
       safe-buffer: 5.2.1
+    dev: false
+
+  /shallowequal@1.1.0:
+    resolution: {integrity: sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==}
     dev: false
 
   /sharp@0.33.5:
@@ -5553,6 +5903,26 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /styled-components@6.1.13(react-dom@19.0.0-rc-66855b96-20241106)(react@19.0.0-rc-66855b96-20241106):
+    resolution: {integrity: sha512-M0+N2xSnAtwcVAQeFEsGWFFxXDftHUD7XrKla06QbpUMmbmtFBMMTcKWvFXtWxuD5qQkB8iU5gk6QASlx2ZRMw==}
+    engines: {node: '>= 16'}
+    peerDependencies:
+      react: '>= 16.8.0'
+      react-dom: '>= 16.8.0'
+    dependencies:
+      '@emotion/is-prop-valid': 1.2.2
+      '@emotion/unitless': 0.8.1
+      '@types/stylis': 4.2.5
+      css-to-react-native: 3.2.0
+      csstype: 3.1.3
+      postcss: 8.4.38
+      react: 19.0.0-rc-66855b96-20241106
+      react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
+      shallowequal: 1.1.0
+      stylis: 4.3.2
+      tslib: 2.6.2
+    dev: false
+
   /styled-jsx@5.1.6(react@19.0.0-rc-66855b96-20241106):
     resolution: {integrity: sha512-qSVyDTeMotdvQYoHWLNGwRFJHC+i+ZvdBRYosOFgC+Wg1vx4frN2/RG/NA7SYqqvKNLf39P2LSRA2pu6n0XYZA==}
     engines: {node: '>= 12.0.0'}
@@ -5568,6 +5938,10 @@ packages:
     dependencies:
       client-only: 0.0.1
       react: 19.0.0-rc-66855b96-20241106
+    dev: false
+
+  /stylis@4.3.2:
+    resolution: {integrity: sha512-bhtUjWd/z6ltJiQwg0dUfxEJ+W+jdqQd8TbWLWyeIJHlnsqmGLRFFd8e5mA0AZi/zx90smXRlN66YMTcaSFifg==}
     dev: false
 
   /sucrase@3.35.0:
@@ -5711,6 +6085,10 @@ packages:
 
   /tslib@1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
+    dev: false
+
+  /tslib@2.6.2:
+    resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
     dev: false
 
   /tslib@2.8.1:
@@ -5939,6 +6317,14 @@ packages:
 
   /use-sync-external-store@1.2.0(react@19.0.0-rc-66855b96-20241106):
     resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 19.0.0-rc-66855b96-20241106
+    dev: false
+
+  /use-sync-external-store@1.2.2(react@19.0.0-rc-66855b96-20241106):
+    resolution: {integrity: sha512-PElTlVMwpblvbNqQ82d2n6RjStvdSoNe9FG28kNfz3WiXilJm4DdNkEzRhCZuIDwY8U08WVihhGR5iRqAwfDiw==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
@@ -6235,6 +6621,24 @@ packages:
       - utf-8-validate
     dev: false
 
+  /xrpl@4.0.0:
+    resolution: {integrity: sha512-VZm1lQWHQ6PheAAFGdH+ISXKvqB2hZDQ0w4ZcdAEtmqZQXtSIVQHOKPz95rEgGANbos7+XClxJ73++joPhA8Cw==}
+    engines: {node: '>=18.0.0'}
+    dependencies:
+      '@scure/bip32': 1.6.0
+      '@scure/bip39': 1.5.0
+      '@xrplf/isomorphic': 1.0.1
+      '@xrplf/secret-numbers': 1.0.0
+      bignumber.js: 9.1.2
+      eventemitter3: 5.0.1
+      ripple-address-codec: 5.0.0
+      ripple-binary-codec: 2.1.0
+      ripple-keypairs: 2.0.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+    dev: false
+
   /xumm-js-pkce@1.0.2:
     resolution: {integrity: sha512-hcadf2mHYBd6vCaKtQhcLJJjoG+1XIIbh2mq+QthheoRHAf3k/gqQNDnVqJnANTK7NBKo7GJWnY2yCkYj/AQzQ==}
     dependencies:
@@ -6314,3 +6718,23 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /zustand@4.5.5(@types/react@18.3.12)(react@19.0.0-rc-66855b96-20241106):
+    resolution: {integrity: sha512-+0PALYNJNgK6hldkgDq2vLrw5f6g/jCInz52n9RTpropGgeAf/ioFUCdtsjCqu4gNhW9D01rUQBROoRjdzyn2Q==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      '@types/react': '>=16.8'
+      immer: '>=9.0.6'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      immer:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      '@types/react': 18.3.12
+      react: 19.0.0-rc-66855b96-20241106
+      use-sync-external-store: 1.2.2(react@19.0.0-rc-66855b96-20241106)
+    dev: false

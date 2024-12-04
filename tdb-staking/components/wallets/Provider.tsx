@@ -1,13 +1,31 @@
 'use client'
 
-import { WalletAdaptor } from '@xrpl-wallet/core'
-import { WalletClientContextProvider } from '@xrpl-wallet/react'
+import { CrossmarkWallet } from '@xrpl-wallet-adapter/crossmark'
+import { WalletConnectWallet } from '@xrpl-wallet-adapter/walletconnect'
+import { XamanWallet } from '@xrpl-wallet-adapter/xaman'
+import { WalletProvider as StandardWalletProvider } from '@xrpl-wallet-standard/react'
 
-type Props<T extends WalletAdaptor = WalletAdaptor> = {
-  adaptors: T[]
+const additionalWallets = [
+  new XamanWallet('8f1280ed-374c-4b49-86ee-6dfbcdd4563f'),
+  new CrossmarkWallet(),
+  new WalletConnectWallet({
+    projectId: '85ad846d8aa771cd56c2bbbf30f7a183',
+    metadata: {
+      name: 'React App',
+      description: 'React App for WalletConnect',
+      url: 'https://walletconnect.com/',
+      icons: ['https://avatars.githubusercontent.com/u/37784886'],
+    },
+    networks: ['xrpl:devnet'],
+  }),
+]
+
+export default function WalletProvider({
+  children,
+}: Readonly<{
   children: React.ReactNode
-}
-
-export default function Provider({ adaptors, children }: Props) {
-  return <WalletClientContextProvider adaptors={adaptors}>{children}</WalletClientContextProvider>
+}>) {
+  return <StandardWalletProvider registerWallets={additionalWallets}>
+            {children}
+    </StandardWalletProvider>
 }

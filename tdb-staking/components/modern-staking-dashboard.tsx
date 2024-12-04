@@ -8,6 +8,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { WalletConnectDialog } from './wallet-connect-dialog'
 import { StakingTab } from './staking-tab'
 import Image from "next/image"
+import { use } from 'react'
+import { useXRPL } from './contexts/XRPLContext'
 
 type Provider = {
   name: string;
@@ -25,6 +27,8 @@ const providers: Provider[] = [
   { name: "Bithomp", key: "rB4x...", delegation: "982.67", commission: "3%", url: "https://bithomp.com" },
   { name: "XRP Toolkit", key: "rJ2d...", delegation: "756.92", commission: "5%", url: "https://xrptoolkit.com" },
 ]
+
+const { account } = useXRPL()
 
 export default function StakingDashboard() {
   const [searchTerm, setSearchTerm] = useState('')
@@ -136,7 +140,7 @@ export default function StakingDashboard() {
                         <div className="grid grid-cols-4 gap-4 items-center">
                           <div>
                             <div className="flex items-center space-x-2">
-                              <span className="h-2 w-2 bg-green-500 rounded-full" />
+                              <span className="h-2 w-2 bg-green-500 rounded-full animate-pulse-slow" />
                               <span className="font-medium text-gray-100">{provider.name}</span>
                               <a 
                                 href={provider.url} 
@@ -145,7 +149,7 @@ export default function StakingDashboard() {
                                 onClick={(e) => e.stopPropagation()}
                                 className="hover:text-blue-400 transition-colors duration-300"
                               >
-                                <ExternalLink className="h-4 w-4 text-gray-400 cursor-pointer hover:text-blue-400 transition-colors duration-300" />
+                                <ExternalLink className="h-4 w-4 text-gray-400 hover:text-blue-400" />
                               </a>
                             </div>
                           </div>
