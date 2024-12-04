@@ -8,11 +8,11 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import Image from "next/image"
-import { useXRPL } from "./contexts/XRPLContext"
+// import { useXRPL } from "./contexts/XRPLContext"
 
 export function WalletConnectDialog() {
-  const { connect, wallets } = useXRPL() // Get wallets from XRPL context instead of direct call
-  
+  // const { connect, wallets } = useXRPL() // Get wallets from XRPL context instead of direct call
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -28,7 +28,7 @@ export function WalletConnectDialog() {
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-          {wallets.map((wallet) => (
+          {/* {wallets.map((wallet) => (
             <Button
               key={wallet.name}
               variant="outline"
@@ -44,7 +44,7 @@ export function WalletConnectDialog() {
               />
               <span>{wallet.name}</span>
             </Button>
-          ))}
+          ))} */}
         </div>
       </DialogContent>
     </Dialog>

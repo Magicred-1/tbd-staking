@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
@@ -19,6 +19,36 @@ const durationOptions: DurationOption[] = [
 
 export function StakingTab() {
   const [selectedDuration, setSelectedDuration] = useState<number>(2) // Default to 120D
+  const [amount, setAmount] = useState<string>("0.05")
+  const [availableBalance, setAvailableBalance] = useState<number>(0.00000061)
+  const [personalQuota, setPersonalQuota] = useState<number>(300000)
+
+  const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    if (/^\d*\.?\d*$/.test(value) || value === "") {
+      setAmount(value)
+    }
+  }
+
+  const handleMaxClick = () => {
+    setAmount(availableBalance.toFixed(8));
+  }
+
+  const isAmountValid = () => {
+    const numAmount = parseFloat(amount)
+    return !isNaN(numAmount) && numAmount >= 0.05 && numAmount <= availableBalance && numAmount <= personalQuota
+  }
+
+  useEffect(() => {
+    // Calculate total locked rewards
+    const numAmount = parseFloat(amount) || 0
+    const apr = parseFloat(durationOptions[selectedDuration].apr) / 100
+    const days = parseInt(durationOptions[selectedDuration].days)
+    const totalRewards = (numAmount * apr * days) / 365
+    
+    // Update UI with calculated values (you can add state variables for these if needed)
+    console.log(`Total Locked Rewards: ${totalRewards.toFixed(8)} XRP`)
+  }, [amount, selectedDuration, availableBalance])
 
   return (
     <div className="space-y-6">
@@ -51,13 +81,20 @@ export function StakingTab() {
           <Input
             className="bg-gray-800 border-gray-700 text-gray-100 h-14 pl-4 pr-24"
             placeholder="Minimum 0.05 XRP"
+            value={amount}
+            onChange={handleAmountChange}
           />
           <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center space-x-2">
             <div className="flex items-center space-x-2">
               <Image src="/xrp_icon.png" alt="XRP" width={30} height={30} className="rounded-full border border-gray-700" />
               <span className="text-gray-100">XRP</span>
             </div>
-            <span className="text-blue-400">Max</span>
+            <button
+              className="text-blue-400 hover:text-blue-300"
+              onClick={handleMaxClick}
+            >
+              Max
+            </button>
           </div>
         </div>
 
@@ -65,14 +102,7 @@ export function StakingTab() {
           <div className="flex justify-between text-sm">
             <span className="text-gray-400">Available</span>
             <div className="flex items-center space-x-2">
-              <span className="text-gray-100">0.00000061</span>
-              <span className="text-gray-100">XRP</span>
-            </div>
-          </div>
-          <div className="flex justify-between text-sm">
-            <span className="text-gray-400">Personal Remaining Quota</span>
-            <div className="flex items-center space-x-2">
-              <span className="text-gray-100">300,000</span>
+              <span className="text-gray-100">{availableBalance.toFixed(8)}</span>
               <span className="text-gray-100">XRP</span>
             </div>
           </div>
@@ -99,9 +129,13 @@ export function StakingTab() {
         <div className="space-y-4">
           <div className="flex justify-between items-center">
             <span className="text-gray-400">Total Locked Rewards</span>
-            <span className="text-emerald-400">--</span>
+            <span className="text-emerald-400">
+              {isAmountValid()
+                ? `${((parseFloat(amount) * parseFloat(durationOptions[selectedDuration].apr.slice(0, -1)) / 100) * parseInt(durationOptions[selectedDuration].days) / 365).toFixed(8)} XRP`
+                : "--"}
+            </span>
           </div>
-          <div className="text-sm text-gray-400">APR: 0.3%</div>
+          <div className="text-sm text-gray-400">APR: {durationOptions[selectedDuration].apr}</div>
           
           <div className="space-y-4">
             <div className="flex justify-between">
@@ -125,7 +159,10 @@ export function StakingTab() {
         </div>
       </div>
 
-      <Button className="w-full h-12 bg-gray-700 hover:bg-gray-600 text-gray-100">
+      <Button 
+        className="w-full h-12 bg-gray-700 hover:bg-gray-600 text-gray-100"
+        disabled={!isAmountValid()}
+      >
         Confirm
       </Button>
     </div>

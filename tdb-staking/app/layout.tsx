@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import WalletProvider from "@/components/wallets/Provider";
 import { Lexend } from 'next/font/google';
-import { XRPLProvider } from "@/components/contexts/XRPLContext";
+// import { XRPLProvider } from "@/components/contexts/XRPLContext";
 
 export const metadata: Metadata = {
   title: "TBD Staking",
@@ -21,15 +21,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <WalletProvider>
-        <XRPLProvider>
+      {/* <WalletProvider>
+        <XRPLProvider> */}
           <body
           className={`${lexend.className} antialiased`}
       >
             {children}
           </body>
-        </XRPLProvider>
-      </WalletProvider>
+        {/* </XRPLProvider>
+      </WalletProvider> */}
     </html>
   );
 }
