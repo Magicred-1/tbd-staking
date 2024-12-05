@@ -20,8 +20,8 @@ const durationOptions: DurationOption[] = [
 export function StakingTab() {
   const [selectedDuration, setSelectedDuration] = useState<number>(2) // Default to 120D
   const [amount, setAmount] = useState<string>("0.05")
-  const [availableBalance, setAvailableBalance] = useState<number>(0.00000061)
-  const [personalQuota, setPersonalQuota] = useState<number>(300000)
+  const [availableBalance, ] = useState<number>(0.00000061)
+  const [personalQuota, ] = useState<number>(300000)
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value

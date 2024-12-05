@@ -21,15 +21,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* <WalletProvider>
-        <XRPLProvider> */}
+      <WalletProvider>
           <body
           className={`${lexend.className} antialiased`}
       >
             {children}
           </body>
-        {/* </XRPLProvider>
-      </WalletProvider> */}
+      </WalletProvider>
     </html>
   );
 }
