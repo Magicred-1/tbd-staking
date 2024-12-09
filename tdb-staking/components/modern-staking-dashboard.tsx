@@ -10,6 +10,12 @@ import { StakingTab } from './staking-tab'
 import Image from "next/image"
 import { FAQ } from './faq-section'
 // import { useXRPL } from './contexts/XRPLContext'
+import {
+  useAccount,
+  useConnectionStatus,
+  useDisconnect,
+} from '@xrpl-wallet-standard/react'
+import { Button } from './ui/button'
 
 type Provider = {
   name: string;
@@ -43,11 +49,11 @@ const shortenAddress = (address: string) => {
   return address.slice(0, 6) + '...' + address.slice(-4)
 }
 
-// const { account } = useXRPL()
-
 export default function StakingDashboard() {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedProvider, setSelectedProvider] = useState<Provider | null>(null)
+  const account = useAccount()
+  const disconnect = useDisconnect()
 
   const filteredProviders = allProviders.filter(provider => 
     provider.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -98,11 +104,29 @@ export default function StakingDashboard() {
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <h1 className="text-2xl font-bold bg-clip-text text-white">
             <div className="flex items-center space-x-2 gap-2">
-              <Image src="/xrp_icon.png" alt="XRP" width={30} height={30} className="rounded-full border border-gray-700" />
-              XRP Restaking
+              <Image src="/logo.png" alt="x-Stake" width={150} height={200} />
             </div>
           </h1>
-          <WalletConnectDialog />
+          {useConnectionStatus() === 'connected' ? (
+            <div className="flex items-center space-x-4">
+              <div className="bg-gray-700 rounded-full px-4 py-2 flex items-center space-x-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                <span className="text-sm font-medium text-gray-200">{shortenAddress(account?.address || "")}</span>
+              </div>
+              <Button 
+                onClick={() => disconnect()} 
+                variant="outline" 
+                className="
+                  border-gray-600 text-gray-200 bg-blue-600
+                  hover:bg-blue-700 
+                  hover:text-white transition-colors duration-200"
+              >
+                Disconnect
+              </Button>
+            </div>
+          ) : (
+            <WalletConnectDialog />
+          )}
         </div>
       </header>
 
@@ -167,8 +191,8 @@ export default function StakingDashboard() {
           <div className="lg:col-span-2 pb-8">
             <Card className="bg-gray-800 border-gray-700">
               <CardHeader>
-                <CardTitle className="text-xl text-gray-100">Step-1: Select a finality provider</CardTitle>
-                <CardDescription className="text-gray-400">Choose a provider to stake your tokens</CardDescription>
+                <CardTitle className="text-xl text-gray-100">Step-1: Select a validator provider</CardTitle>
+                <CardDescription className="text-gray-400">Choose a validator to stake your tokens</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="relative mb-4">
@@ -217,31 +241,50 @@ export default function StakingDashboard() {
           </div>
 
           <div>
-            <Tabs defaultValue="connect" className="bg-gray-800 border border-gray-700 rounded-lg p-1">
-              <TabsList className="grid w-full grid-cols-2 bg-gray-750">
-                <TabsTrigger value="connect" className="data-[state=active]:bg-blue-400">Connect</TabsTrigger>
-                <TabsTrigger value="stake" className="data-[state=active]:bg-blue-400">Stake</TabsTrigger>
-              </TabsList>
-              <TabsContent value="connect">
-                <Card className="border-0 bg-transparent">
-                  <CardHeader>
-                    <CardTitle className="text-gray-100">Connect Wallet</CardTitle>
-                    <CardDescription className="text-gray-400">Link your wallet to start staking</CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex flex-col items-center text-center">
-                    <Wallet className="h-16 w-16 mb-4 text-blue-400" />
-                    <WalletConnectDialog />
-                  </CardContent>
-                </Card>
-              </TabsContent>
-              <TabsContent value="stake">
-                <Card className="border-0 bg-transparent">
-                  <CardContent>
-                    <StakingTab />
-                  </CardContent>
-                </Card>
-              </TabsContent>
-            </Tabs>
+          <Tabs 
+          defaultValue={useConnectionStatus() === 'connected' ? "stake" : "connect"} 
+          className="bg-gray-800 border border-gray-700 rounded-lg p-1"
+        >
+          <TabsList className="grid w-full grid-cols-2 bg-gray-750">
+            <TabsTrigger 
+              value="connect" 
+              className="data-[state=active]:bg-blue-400 data-[state=active]:text-white"
+              disabled={useConnectionStatus() === 'connected'}
+            >
+              Connect
+            </TabsTrigger>
+            <TabsTrigger 
+              value="stake" 
+              className="data-[state=active]:bg-blue-400 data-[state=active]:text-white"
+              disabled={useConnectionStatus() !== 'connected'}
+            >
+              Stake
+            </TabsTrigger>
+          </TabsList>
+          <TabsContent value="connect">
+            <Card className="border-0 bg-transparent">
+              <CardHeader>
+                <CardTitle className="text-gray-100">Connect Wallet</CardTitle>
+                <CardDescription className="text-gray-400">Link your wallet to start staking</CardDescription>
+              </CardHeader>
+              <CardContent className="flex flex-col items-center text-center">
+                <Wallet className="h-16 w-16 mb-4 text-blue-400" />
+                <WalletConnectDialog />
+              </CardContent>
+            </Card>
+          </TabsContent>
+          <TabsContent value="stake">
+            <Card className="border-0 bg-transparent">
+              <CardContent>
+                {useConnectionStatus() === 'connected' ? (
+                  <StakingTab />
+                ) : (
+                  <p className="text-center text-gray-400">Please connect your wallet first to stake</p>
+                )}
+              </CardContent>
+            </Card>
+          </TabsContent>
+        </Tabs>
           </div>
         </div>
       </main>

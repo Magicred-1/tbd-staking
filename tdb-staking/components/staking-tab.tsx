@@ -5,6 +5,11 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
+import { ConfirmStakeDialog } from "./confirm-stake-dialog"
+import { LoadingConfirmationDialog } from "./loading-confirmation-dialog"
+// import {
+//   useAccounts
+// } from '@xrpl-wallet-standard/react'
 
 interface DurationOption {
   days: string
@@ -19,9 +24,12 @@ const durationOptions: DurationOption[] = [
 
 export function StakingTab() {
   const [selectedDuration, setSelectedDuration] = useState<number>(2) // Default to 120D
-  const [amount, setAmount] = useState<string>("0.05")
-  const [availableBalance, ] = useState<number>(0.00000061)
+  const [amount, setAmount] = useState<string>("25")
+  const [availableBalance, ] = useState<number>(25)
   const [personalQuota, ] = useState<number>(300000)
+  const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState<boolean>(false)
+  const [isLoadingConfirmationOpen, setIsLoadingConfirmationOpen] = useState<boolean>(false)
+
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
@@ -37,6 +45,18 @@ export function StakingTab() {
   const isAmountValid = () => {
     const numAmount = parseFloat(amount)
     return !isNaN(numAmount) && numAmount >= 0.05 && numAmount <= availableBalance && numAmount <= personalQuota
+  }
+
+  const handleConfirm = () => {
+    setIsConfirmDialogOpen(false)
+    setIsLoadingConfirmationOpen(true)
+  }
+
+  const handleLoadingConfirmationClose = () => {
+    setIsLoadingConfirmationOpen(false)
+    // Reset form or perform any other necessary actions
+    setAmount("25")
+    setSelectedDuration(2)
   }
 
   useEffect(() => {
@@ -66,7 +86,7 @@ export function StakingTab() {
             )}
           >
             <div className="text-gray-400 text-sm mb-1">{option.days}</div>
-            <div className="text-blue-400 text-xl font-medium">{option.apr}</div>
+            <div className="text-blue-400 text-xl font-medium">{option.apr} APY</div>
           </button>
         ))}
       </div>
@@ -118,12 +138,6 @@ export function StakingTab() {
           >
             Summary
           </Button>
-          <Button
-            variant="ghost"
-            className="text-gray-400 hover:text-gray-300 hover:bg-transparent px-0 font-medium"
-          >
-            Product Rules
-          </Button>
         </div>
 
         <div className="space-y-4">
@@ -135,36 +149,34 @@ export function StakingTab() {
                 : "--"}
             </span>
           </div>
-          <div className="text-sm text-gray-400">APR: {durationOptions[selectedDuration].apr}</div>
-          
-          <div className="space-y-4">
-            <div className="flex justify-between">
-              <span className="text-gray-400">First Distribution Date</span>
-              <span className="text-gray-100">2024-12-05 01:00</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-gray-400">Interest End Date</span>
-              <span className="text-gray-100">2025-04-03 01:00</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-gray-400">Next Subscription Date</span>
-              <span className="text-gray-100">2025-04-03 01:00</span>
-            </div>
-          </div>
-
-          <div className="space-y-2 text-sm text-gray-400">
-            <p>* The Simple Earn APR is subject to change on a daily basis. APR does not mean the actual or predicted returns in fiat currency.</p>
-            <p>* Early redemption will return your assets to your Spot Wallet within <span className="text-gray-100">72 hours</span>.</p>
-          </div>
+          <div className="text-sm text-gray-400">APY: {durationOptions[selectedDuration].apr}</div>
         </div>
       </div>
 
       <Button 
         className="w-full h-12 bg-gray-700 hover:bg-gray-600 text-gray-100"
         disabled={!isAmountValid()}
+        onClick={() => setIsConfirmDialogOpen(true)}
       >
         Confirm
       </Button>
+      <ConfirmStakeDialog
+        isOpen={isConfirmDialogOpen}
+        onClose={() => setIsConfirmDialogOpen(false)}
+        amount={amount}
+        estimatedRewards={`${((parseFloat(amount) * parseFloat(durationOptions[selectedDuration].apr.slice(0, -1)) / 100) * parseInt(durationOptions[selectedDuration].days) / 365).toFixed(8)}`}
+        onConfirm={handleConfirm}
+        // tokenA="XRP"
+        // tokenB="ATOM"
+        stakingPeriod={parseInt(durationOptions[selectedDuration].days)}
+        APR={durationOptions[selectedDuration].apr}
+      />
+      <LoadingConfirmationDialog
+        isOpen={isLoadingConfirmationOpen}
+        onClose={handleLoadingConfirmationClose}
+        transactionHash="957148BAC83EE9FDB4593F8FC5EC9019F0D8138E13D91B7B53AEEDEA1B3926E8"
+        amount={amount}
+      />
     </div>
   )
 }

@@ -8,12 +8,17 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import Image from "next/image"
-import { useConnect, useWallets, useWallet } from '@xrpl-wallet-standard/react'
+import { useConnect, useWallets, useWallet, useConnectionStatus } from '@xrpl-wallet-standard/react'
 
 export function WalletConnectDialog() {
   const wallets = useWallets()
   const { wallet: selectedWallet } = useWallet()
+  const connectionStatus = useConnectionStatus()
   const { connect } = useConnect() // Destructure to get the connect function
+
+  if (connectionStatus === 'connected') {
+    return null
+  }
 
   return (
     <Dialog>
@@ -30,33 +35,32 @@ export function WalletConnectDialog() {
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-          {wallets.length > 0 ? (
-            wallets.map((wallet) => (
-              <Button
-                key={wallet.name}
-                variant="outline"
-                className="flex items-center justify-start space-x-2 h-12 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-left"
-                onClick={() => connect(wallet)} // Connect to selected wallet
-              >
-                {/* Display wallet icon and name */}
-                <Image
-                  src={`/${wallet.name}_icon.png`} // Check for the availability of icons for each wallet
-                  alt={wallet.name}
-                  width={24}
-                  height={24}
-                  className="rounded-full border border-gray-700"
-                />
-                <span>{wallet.name}</span>
-              </Button>
-            ))
-          ) : (
-            <Button
-              variant="outline"
-              className="flex items-center justify-start space-x-2 h-12 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-left"
-            >
-              <span>{selectedWallet?.name}</span>
-            </Button>
-          )}
+        {wallets.length > 0 ? (
+        wallets.map((wallet) => (
+          <Button
+            key={wallet.name}
+            variant="outline"
+            className="flex items-center justify-start space-x-2 h-12 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-left"
+            onClick={() => connect(wallet)}
+          >
+            <Image
+              src={`/${wallet.name}_icon.png`}
+              alt={wallet.name}
+              width={24}
+              height={24}
+              className="rounded-full border border-gray-700"
+            />
+            <span>{wallet.name}</span>
+          </Button>
+        ))
+      ) : (
+        <Button
+          variant="outline"
+          className="flex items-center justify-start space-x-2 h-12 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-left"
+        >
+          <span>{selectedWallet?.name}</span>
+          </Button>
+        )}
         </div>
       </DialogContent>
     </Dialog>
