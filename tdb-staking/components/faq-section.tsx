@@ -8,12 +8,12 @@ import {
   
   const faqData = [
     {
-      question: "What is XRP Restaking?",
-      answer: "XRP Restaking is a process where XRP holders can stake their tokens across multiple blockchain networks, including Cosmos, Avalanche, and Polkadot. This allows for increased interoperability and potential rewards from various ecosystems."
+      question: "What is x-Stake?",
+      answer: "x-Stake allows XRP holders to participate in staking on multiple blockchain networks, such as Cosmos, Avalanche, and Polkadot. While XRP itself operates on a Proof-of-Authority (PoA) model and is not directly staked, holders can lock their XRP to support and secure Proof-of-Stake (PoS) blockchains, unlocking rewards and enhancing interoperability across ecosystems."
     },
     {
       question: "How do I start staking?",
-      answer: "To start staking, first connect your wallet, then select a finality provider from the list. Once selected, you can specify the amount you wish to stake and confirm the transaction."
+      answer: "To start staking, first connect your wallet, then select a validator provider from the list. Once selected, you can specify the amount you wish to stake and confirm the transaction."
     },
     {
       question: "What are the risks involved?",

@@ -1,4 +1,7 @@
 import { Client, Transaction, Wallet } from "xrpl";
+import {
+    useWallet
+} from "@xrpl-wallet-standard/react"
 
 // Connect to XRPL and submit a payment transaction
 export const submitTransaction = async (xrplAddress: string, destinationAddress: string, payloadHash: string, amount: string) : Promise<{ success: boolean, hash?: string, message?: string }> => {
