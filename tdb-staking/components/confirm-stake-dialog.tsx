@@ -2,7 +2,7 @@
 import Image from "next/image"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
-import { fetchXRPPrice, fetchATOMPrice } from "./server/fetchPriceFeeds"
+import { fetchXRPPrice } from "./server/fetchPriceFeeds"
 import { useEffect, useState } from 'react'
 
 interface ConfirmStakeDialogProps {
@@ -30,7 +30,7 @@ export function ConfirmStakeDialog({
   useEffect(() => {
     const fetchPrices = async () => {
       const xrp = await fetchXRPPrice()
-      const atom = await fetchATOMPrice()
+      // const atom = await fetchATOMPrice()
       setXrpPrice(xrp)
       // setAtomPrice(atom)
     }

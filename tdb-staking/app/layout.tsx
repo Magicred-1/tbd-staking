@@ -20,13 +20,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <WalletProvider>
-          <body
-          className={`${lexend.className} antialiased`}
+      <body
+      className={`${lexend.className} antialiased`}
       >
-            {children}
-          </body>
-      </WalletProvider>
+        <WalletProvider>
+          {children}
+        </WalletProvider>
+      </body>
     </html>
   );
 }

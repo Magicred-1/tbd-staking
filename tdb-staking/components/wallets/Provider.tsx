@@ -3,8 +3,13 @@
 import { CrossmarkWallet } from '@xrpl-wallet-adapter/crossmark'
 import { WalletConnectWallet } from '@xrpl-wallet-adapter/walletconnect'
 import { XamanWallet } from '@xrpl-wallet-adapter/xaman'
-import { WalletProvider as StandardWalletProvider } from '@xrpl-wallet-standard/react'
 import { MetaMaskWallet } from '@xrpl-wallet-adapter/metamask'
+import dynamic from 'next/dynamic'
+
+const WalletProviderClient = dynamic(
+  () => import('@xrpl-wallet-standard/react').then(mod => mod.WalletProvider),
+  { ssr: false }
+);
 
 const additionalWallets = [
   new XamanWallet('52ab4f80-09d2-4864-ae99-b7327a3ba9c9'),
@@ -27,7 +32,7 @@ export default function WalletProvider({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return <StandardWalletProvider autoConnect={true} registerWallets={additionalWallets}>
+  return <WalletProviderClient preferredWallets={["MetaMask"]} autoConnect={true} registerWallets={additionalWallets}>
             {children}
-    </StandardWalletProvider>
+    </WalletProviderClient>
 }
