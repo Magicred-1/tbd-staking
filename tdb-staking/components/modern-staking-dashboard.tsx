@@ -9,7 +9,6 @@ import { WalletConnectDialog } from './wallet-connect-dialog'
 import { StakingTab } from './staking-tab'
 import Image from "next/image"
 import { FAQ } from './faq-section'
-// import { useXRPL } from './contexts/XRPLContext'
 import {
   useAccount,
   useConnectionStatus,
@@ -71,11 +70,11 @@ export default function StakingDashboard() {
           onClick={() => setSelectedProvider(provider)}
         >
           <CardContent className="p-4">
-            <div className="grid grid-cols-5 gap-4 items-center">
-              <div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-4 items-center">
+              <div className="col-span-2 sm:col-span-1">
                 <div className="flex items-center space-x-2">
                   <span className="h-2 w-2 bg-green-500 rounded-full animate-pulse-slow" />
-                  <span className="font-medium text-gray-100">{provider.name}</span>
+                  <span className="font-medium text-gray-100 text-sm sm:text-base">{provider.name}</span>
                   <a 
                     href={provider.url} 
                     target="_blank" 
@@ -87,10 +86,10 @@ export default function StakingDashboard() {
                   </a>
                 </div>
               </div>
-              <div className="font-mono text-sm text-gray-400">{shortenAddress(provider.key)}</div>
-              <div className="font-mono text-sm text-blue-400">{provider.delegation} Tokens</div>
-              <div className="text-sm text-purple-400">{provider.commission}</div>
-              <div className="text-sm text-gray-400">{provider.network}</div>
+              <div className="hidden sm:block font-mono text-xs sm:text-sm text-gray-400">{shortenAddress(provider.key)}</div>
+              <div className="font-mono text-xs sm:text-sm text-blue-400">{provider.delegation} Tokens</div>
+              <div className="text-xs sm:text-sm text-purple-400">{provider.commission}</div>
+              <div className="text-xs sm:text-sm text-gray-400">{provider.network}</div>
             </div>
           </CardContent>
         </Card>
@@ -209,19 +208,19 @@ export default function StakingDashboard() {
                     <TabsTrigger value="cosmos" className="text-white data-[state=active]:bg-blue-400">
                       <div className="flex items-center space-x-2 gap-2">
                         <Image src="/cosmos_icon.png" alt="Cosmos" width={30} height={30} className="rounded-full border border-white" />
-                        Cosmos
+                        <span className="hidden sm:inline">Cosmos</span>
                       </div>
                     </TabsTrigger>
                     <TabsTrigger value="avalanche" className="text-white data-[state=active]:bg-blue-400">
                       <div className="flex items-center space-x-2 gap-2">
                         <Image src="/avalanche_icon.png" alt="Avalanche" width={30} height={30} className="rounded-full border border-white" />
-                        Avalanche
+                        <span className="hidden sm:inline">Avalanche</span>
                       </div>
                     </TabsTrigger>
                     <TabsTrigger value="polkadot" className="text-white data-[state=active]:bg-blue-400">
                       <div className="flex items-center space-x-2 gap-2">
                         <Image src="/polkadot_icon.png" alt="Polkadot" width={30} height={30} className="rounded-full border border-white" />
-                        Polkadot
+                        <span className="hidden sm:inline">Polkadot</span>
                       </div>
                     </TabsTrigger>
                   </TabsList>
@@ -241,50 +240,50 @@ export default function StakingDashboard() {
           </div>
 
           <div>
-          <Tabs 
-          defaultValue={useConnectionStatus() === 'connected' ? "stake" : "connect"} 
-          className="bg-gray-800 border border-gray-700 rounded-lg p-1"
-        >
-          <TabsList className="grid w-full grid-cols-2 bg-gray-750">
-            <TabsTrigger 
-              value="connect" 
-              className="data-[state=active]:bg-blue-400 data-[state=active]:text-white"
-              disabled={useConnectionStatus() === 'connected'}
+            <Tabs 
+              defaultValue={useConnectionStatus() === 'connected' ? "stake" : "connect"} 
+              className="bg-gray-800 border border-gray-700 rounded-lg p-1"
             >
-              Connect
-            </TabsTrigger>
-            <TabsTrigger 
-              value="stake" 
-              className="data-[state=active]:bg-blue-400 data-[state=active]:text-white"
-              disabled={useConnectionStatus() !== 'connected'}
-            >
-              Stake
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value="connect">
-            <Card className="border-0 bg-transparent">
-              <CardHeader>
-                <CardTitle className="text-gray-100">Connect Wallet</CardTitle>
-                <CardDescription className="text-gray-400">Link your wallet to start staking</CardDescription>
-              </CardHeader>
-              <CardContent className="flex flex-col items-center text-center">
-                <Wallet className="h-16 w-16 mb-4 text-blue-400" />
-                <WalletConnectDialog />
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="stake">
-            <Card className="border-0 bg-transparent">
-              <CardContent>
-                {useConnectionStatus() === 'connected' ? (
-                  <StakingTab />
-                ) : (
-                  <p className="text-center text-gray-400">Please connect your wallet first to stake</p>
-                )}
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
+              <TabsList className="grid w-full grid-cols-2 bg-gray-750">
+                <TabsTrigger 
+                  value="connect" 
+                  className="data-[state=active]:bg-blue-400 data-[state=active]:text-white"
+                  disabled={useConnectionStatus() === 'connected'}
+                >
+                  Connect
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="stake" 
+                  className="data-[state=active]:bg-blue-400 data-[state=active]:text-white"
+                  disabled={useConnectionStatus() !== 'connected'}
+                >
+                  Stake
+                </TabsTrigger>
+              </TabsList>
+              <TabsContent value="connect">
+                <Card className="border-0 bg-transparent">
+                  <CardHeader>
+                    <CardTitle className="text-gray-100">Connect Wallet</CardTitle>
+                    <CardDescription className="text-gray-400">Link your wallet to start staking</CardDescription>
+                  </CardHeader>
+                  <CardContent className="flex flex-col items-center text-center">
+                    <Wallet className="h-16 w-16 mb-4 text-blue-400" />
+                    <WalletConnectDialog />
+                  </CardContent>
+                </Card>
+              </TabsContent>
+              <TabsContent value="stake">
+                <Card className="border-0 bg-transparent">
+                  <CardContent>
+                    {useConnectionStatus() === 'connected' ? (
+                      <StakingTab />
+                    ) : (
+                      <p className="text-center text-gray-400">Please connect your wallet first to stake</p>
+                    )}
+                  </CardContent>
+                </Card>
+              </TabsContent>
+            </Tabs>
           </div>
         </div>
       </main>
