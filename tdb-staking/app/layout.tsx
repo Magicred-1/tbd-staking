@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import WalletProvider from "@/components/wallets/Provider";
 import { Lexend } from 'next/font/google';
+// import { XRPLClient } from '@nice-xrpl/react-xrpl';
 
 export const metadata: Metadata = {
   title: "x-Stake",
@@ -24,7 +25,7 @@ export default function RootLayout({
       className={`${lexend.className} antialiased`}
       >
         <WalletProvider>
-          {children}
+            {children}
         </WalletProvider>
       </body>
     </html>

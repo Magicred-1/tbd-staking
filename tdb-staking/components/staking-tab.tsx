@@ -7,9 +7,10 @@ import { cn } from "@/lib/utils"
 import Image from "next/image"
 import { ConfirmStakeDialog } from "./confirm-stake-dialog"
 import { LoadingConfirmationDialog } from "./loading-confirmation-dialog"
-// import {
-//   useAccounts
-// } from '@xrpl-wallet-standard/react'
+import { submitTransaction } from "./client/sendTransactionToAxelar"
+import {
+  useAccount
+} from '@xrpl-wallet-standard/react'
 
 interface DurationOption {
   days: string
@@ -29,6 +30,7 @@ export function StakingTab() {
   const [personalQuota, ] = useState<number>(300000)
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState<boolean>(false)
   const [isLoadingConfirmationOpen, setIsLoadingConfirmationOpen] = useState<boolean>(false)
+  const account = useAccount()
 
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,9 +49,25 @@ export function StakingTab() {
     return !isNaN(numAmount) && numAmount >= 0.05 && numAmount <= availableBalance && numAmount <= personalQuota
   }
 
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
     setIsConfirmDialogOpen(false)
     setIsLoadingConfirmationOpen(true)
+    if (!account) {
+      console.error("Account not found")
+      return
+    }
+    const result = await submitTransaction(
+      account.address,
+      "8A90ca40372dAEF77532D1C3538E68715Ba36fD7",
+      "PAYLOAD_HASH",
+      "5000000" // 1 XRP in drops
+    );
+    
+    if (result.success) {
+      console.log("Transaction successful! TX Hash:", result.hash);
+    } else {
+      console.error("Transaction failed:", result.message);
+    }
   }
 
   const handleLoadingConfirmationClose = () => {

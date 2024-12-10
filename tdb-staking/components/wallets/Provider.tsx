@@ -5,6 +5,7 @@ import { WalletConnectWallet } from '@xrpl-wallet-adapter/walletconnect'
 import { XamanWallet } from '@xrpl-wallet-adapter/xaman'
 import { MetaMaskWallet } from '@xrpl-wallet-adapter/metamask'
 import dynamic from 'next/dynamic'
+// import { XRPLClient } from '@nice-xrpl/react-xrpl';
 
 const WalletProviderClient = dynamic(
   () => import('@xrpl-wallet-standard/react').then(mod => mod.WalletProvider),
@@ -23,7 +24,7 @@ const additionalWallets = [
       url: 'https://walletconnect.com/',
       icons: ['https://avatars.githubusercontent.com/u/37784886'],
     },
-    networks: ['xrpl:testnet'],
+    networks: ['xrpl:devnet'],
   }),
 ]
 
@@ -32,7 +33,11 @@ export default function WalletProvider({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return <WalletProviderClient preferredWallets={["MetaMask"]} autoConnect={true} registerWallets={additionalWallets}>
+  return (
+  // <XRPLClient>
+    <WalletProviderClient preferredWallets={["MetaMask"]} autoConnect={true} registerWallets={additionalWallets}>
             {children}
     </WalletProviderClient>
+  // </XRPLClient>
+  )
 }
