@@ -26,20 +26,20 @@ type Provider = {
 }
 
 const cosmosProviders: Provider[] = [
-  { name: "Cosmos Hub", key: "cosmos1abcdefghijklmnoprstuvwx1234567", delegation: "3245.83", commission: "3%", url: "https://cosmos.network", network: "Cosmos" },
-  { name: "Osmosis", key: "osmo1abcdefghijklmnoprstuvwx1234567", delegation: "2891.45", commission: "2%", url: "https://osmosis.zone", network: "Cosmos" },
-  { name: "Juno Network", key: "juno1abcdefghijklmnoprstuvwx1234567", delegation: "1567.21", commission: "5%", url: "https://junonetwork.io", network: "Cosmos" },
+  { name: "Stakecito", key: "cosmos1abcdefghijklmnoprstuvwx1234567", delegation: "3245.83", commission: "3%", url: "https://cosmos.network", network: "Cosmos" },
+  { name: "Lombard", key: "osmo1abcdefghijklmnoprstuvwx1234567", delegation: "2891.45", commission: "2%", url: "https://osmosis.zone", network: "Cosmos" },
+  { name: "Kiln", key: "juno1abcdefghijklmnoprstuvwx1234567", delegation: "1567.21", commission: "5%", url: "https://junonetwork.io", network: "Cosmos" },
 ];
 
 const avalancheProviders: Provider[] = [
-  { name: "Avalanche Foundation", key: "0xabcdef1234567890abcdef1234567890abcdef12", delegation: "4567.89", commission: "4%", url: "https://www.avax.network", network: "Avalanche" },
-  { name: "Ava Labs", key: "0x1234567890abcdef1234567890abcdef12345678", delegation: "3456.78", commission: "3%", url: "https://www.avalabs.org", network: "Avalanche" },
+  { name: "OKX Earn", key: "0xabcdef1234567890abcdef1234567890abcdef12", delegation: "4567.89", commission: "4%", url: "https://www.avax.network", network: "Avalanche" },
+  { name: "Anchorage Digital", key: "0x1234567890abcdef1234567890abcdef12345678", delegation: "3456.78", commission: "3%", url: "https://www.avalabs.org", network: "Avalanche" },
 ];
 
 const polkadotProviders: Provider[] = [
-  { name: "Polkadot Network", key: "1abcdefgHijklmnoprstuvwxyz123456", delegation: "5678.90", commission: "5%", url: "https://polkadot.network", network: "Polkadot" },
-  { name: "Kusama", key: "CabcdefgHijklmnoprstuvwxyz123456", delegation: "2345.67", commission: "4%", url: "https://kusama.network", network: "Polkadot" },
-  { name: "Acala", key: "1aRcdefgHijklmnoprstuvwxyz123456", delegation: "1234.56", commission: "3%", url: "https://acala.network", network: "Polkadot" },
+  { name: "Figment", key: "1abcdefgHijklmnoprstuvwxyz123456", delegation: "5678.90", commission: "5%", url: "https://polkadot.network", network: "Polkadot" },
+  { name: "Cobo", key: "CabcdefgHijklmnoprstuvwxyz123456", delegation: "2345.67", commission: "4%", url: "https://kusama.network", network: "Polkadot" },
+  { name: "HashKeyCloud", key: "1aRcdefgHijklmnoprstuvwxyz123456", delegation: "1234.56", commission: "3%", url: "https://acala.network", network: "Polkadot" },
 ];
 
 const allProviders = [...cosmosProviders, ...avalancheProviders, ...polkadotProviders]
