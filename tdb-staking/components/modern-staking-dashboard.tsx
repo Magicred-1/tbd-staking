@@ -250,7 +250,7 @@ export default function StakingDashboard() {
                   className="data-[state=active]:bg-blue-400 data-[state=active]:text-white"
                   disabled={useConnectionStatus() === 'connected'}
                 >
-                  Connect
+                  {useConnectionStatus() === 'connected' ? "Connected" : "Connect"}
                 </TabsTrigger>
                 <TabsTrigger 
                   value="stake" 
