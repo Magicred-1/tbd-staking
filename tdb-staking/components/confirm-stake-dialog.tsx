@@ -2,7 +2,6 @@
 import Image from "next/image"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
-import { fetchXRPPrice } from "./server/fetchPriceFeeds"
 import { useEffect, useState } from 'react'
 
 interface ConfirmStakeDialogProps {
@@ -27,15 +26,17 @@ export function ConfirmStakeDialog({
   const [xrpPrice, setXrpPrice] = useState<number>(0)
   // const [atomPrice, setAtomPrice] = useState<number>(0)
 
+  // https://api.diadata.org/v1/assetQuotation/XRPL/0x0000000000000000000000000000000000000000
+  const fetchXRPPrice = async () => {
+    const XRP_PRICE = await fetch(`https://api.diadata.org/v1/assetQuotation/XRPL/0x0000000000000000000000000000000000000000`)
+    const data = await XRP_PRICE.json()
+    setXrpPrice(data.Price)
+  }
+
   useEffect(() => {
-    const fetchPrices = async () => {
-      const xrp = await fetchXRPPrice()
-      // const atom = await fetchATOMPrice()
-      setXrpPrice(xrp)
-      // setAtomPrice(atom)
-    }
-    fetchPrices()
+    fetchXRPPrice()
   }, [])
+
 
   // Calculate rewards based on amount, APR, and staking period
   const calculateRewards = (amountInXRP: string): string => {
